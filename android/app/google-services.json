@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "577038711095",
+    "firebase_url": "https://weight-68093.firebaseio.com",
+    "project_id": "weight-68093",
+    "storage_bucket": "weight-68093.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:577038711095:android:c88b775c2e6db8fe0982b2",
+        "android_client_info": {
+          "package_name": "com.airsphere.w8"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "577038711095-k7lbsf8j57g7ev969m9oqe5p461tegto.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPo0ndVx0psMxXZkCzoXWeh22wQDKJc1Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "577038711095-k7lbsf8j57g7ev969m9oqe5p461tegto.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
