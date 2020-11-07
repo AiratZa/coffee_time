@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:w8/services/auth.dart';
+import 'package:w8/shared/constants.dart';
+import 'package:w8/shared/loading.dart';
 
 class Register extends StatefulWidget {
 
@@ -16,6 +18,9 @@ class _RegisterState extends State<Register> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
 
+  bool loading = false;
+
+
     //text field states
 
   String email = '';
@@ -25,12 +30,12 @@ class _RegisterState extends State<Register> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return loading? Loading() : Scaffold(
       backgroundColor: Colors.brown[100],
       appBar: AppBar(
         backgroundColor: Colors.brown[400],
         elevation: 0.0,
-        title: Text("Sign up to W8"),
+        title: Text("Sign up to CoffeeTime"),
         actions: [
           FlatButton.icon(
             icon: Icon(Icons.person),
@@ -49,6 +54,7 @@ class _RegisterState extends State<Register> {
             children: [
               SizedBox(height: 20.0),
               TextFormField(
+                decoration: textInputDecoration.copyWith(hintText: 'E-mail',),
                 validator: (value) => value.isEmpty ? 'Enter an e-mail' : null,
                 onChanged: (value){
                   setState(()=> email = value);
@@ -56,6 +62,7 @@ class _RegisterState extends State<Register> {
               ),
               SizedBox(height: 20.0),
               TextFormField(
+                decoration: textInputDecoration.copyWith(hintText: 'Password',),
                 obscureText: true,
                 validator: (value) => value.length < 6 ? 'Enter a password 6+ chars long' : null,
                 onChanged: (value){
@@ -70,13 +77,17 @@ class _RegisterState extends State<Register> {
                 ),
                 onPressed: () async {
                   if(_formKey.currentState.validate()) {
+                    setState(() => loading = true);
                     print(email);
                     print(password);
                     print('hey');
                     dynamic result = await _auth.registerWithEmailAndPassword(email, password);
                     print('hey2');
                     if(result == null){
-                      setState(() => error = 'Please supply a valid email');
+                      setState(() {
+                      loading = false;
+                      error = 'Maybe this email is already used by somebody or it\'s just not valid';
+                      });
                     }
                     
                   }
